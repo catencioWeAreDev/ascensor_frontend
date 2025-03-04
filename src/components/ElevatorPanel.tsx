@@ -1,28 +1,37 @@
-import React from 'react';
-import { webSocketService } from '../websocket';
+import React, { useEffect, useState } from 'react';
+import useWebSocket from '../hooks/useWebSocket';
+import FloorRequest from './FloorRequest';
+import FloorState from '../interfaces/floor.interface';
 
-interface ElevatorPanelProps {
-  onSelectFloor: (floor: number) => void;
-}
 
-const floors: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const ElevatorPanel: React.FC = () => {
+  const { messages } = useWebSocket();
+  
+  
+  const [floorData, setFloorData] = useState<FloorState>({
+    floor: 1,
+    direction: 'up',
+  });
 
-const ElevatorPanel: React.FC<ElevatorPanelProps> = ({ onSelectFloor }) => {
-  const handleSelectFloor = (floor: number) => {
-    onSelectFloor(floor);
-    webSocketService.send({ type: 'selectFloor', floor });
-  };
+  const [showFloorOptions, setShowFloorOptions] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (messages.open === 1 && messages.currentFloor === floorData.floor) {
+      console.log('Puerta abierta');
+        setShowFloorOptions(true);
+    } else {
+      console.log('Puerta Cerrada');
+        setShowFloorOptions(false);
+    }
+  }, [messages]);
 
   return (
     <div>
-      <h2>Seleccionar Piso de Destino</h2>
-      <div className="button-grid">
-        {floors.map((floor) => (
-          <button key={floor} onClick={() => handleSelectFloor(floor)}>
-            {floor}
-          </button>
-        ))}
+      <h2 className="elevator-title">Piso Ascensor</h2>
+      <div className="elevator-floor">
+        <p>{messages.currentFloor}</p>
       </div>
+      <FloorRequest showFloorOptions={showFloorOptions} floorData={floorData}  setFloorData={setFloorData}/>
     </div>
   );
 };

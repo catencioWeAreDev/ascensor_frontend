@@ -1,10 +1,96 @@
-/* src/App.css */
 .elevator-status {
   margin-top: 20px;
   padding: 15px;
   background-color: #f9f9f9;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.elevator-floor {
+  margin-top: 20px;
+  margin-inline: auto !important;
+  width: 200px !important;
+  text-align: center;
+  padding: 15px;
+  color: #fff;
+  background-color: #000;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  > p {
+    color: red !important;;
+    margin: 0;
+    font-size: xx-large;
+    font-weight: 700;
+  }
+}
+
+.elevator-title {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.custom-input {
+  width: 50px; 
+  height: 50px; 
+  font-size: 28px; 
+  padding: 10px; 
+  border: 2px solid #ccc; 
+  border-radius: 8px; 
+  outline: none; 
+  transition: border-color 0.3s ease-in-out;
+}
+
+.custom-input:focus {
+  border-color: #bdbdbd; /* Cambia el borde al hacer clic */
+  box-shadow: 0 0 5px rgba(7, 58, 112, 0.5); /* Efecto de sombra */
+}
+
+.floor-request {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  label {
+    margin-right: 10px;
+    display: block !important;
+  }
+}
+
+.floor-actions {
+  margin: auto;
+  text-align: center;
+  width: 50%;
+  gap: 10px;
+  padding-inline: 20%;
+}
+
+.button {
+  width: 70px;
+  height: 70px;
+  border: none;
+  border-radius: 8px;
+  background-color: #c9c9c9; /* Azul */
+  color: rgb(0, 0, 0);
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: #8f9ba7;
+  color:darkgoldenrod
+}
+
+.button:active {
+  transform: scale(0.9); /* Efecto de clic */
+}
+
+.icon {
+  font-size: 24px;
 }
 
 .floor-options {

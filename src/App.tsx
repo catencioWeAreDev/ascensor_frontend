@@ -1,12 +1,12 @@
-// src/App.tsx
 import React from 'react';
-import FloorRequest from './components/FloorRequest';
+import ElevatorPanel from './components/ElevatorPanel';
+
 import './App.css';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <FloorRequest />
+      <ElevatorPanel />
     </div>
   );
 };
