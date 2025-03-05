@@ -22,6 +22,10 @@ const FloorRequest: React.FC<Props> = ({ showFloorOptions, floorData, setFloorDa
   };
 
   const handleDirection = async (value: 'up' | 'down') => {
+    setFloorData({
+      direction: value,
+      floor: floorData.floor
+    });
     await floorService.postFloor({...floorData, direction: value});
   };
 
